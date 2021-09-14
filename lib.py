@@ -24,22 +24,15 @@ class tag_checker:
             outside_tag = not inside_tag
 
             if start_tag and outside_tag:
-                #start_line = line
                 tag_start_index = line.index(start_t) + len(start_t)
                 line = line[tag_start_index:]
-                #splitted = start_line.split(q_start, 1)
-                #questions.append(splitted[1]) if len(splitted[-1]) > 1 else questions.append(splitted[0])
-                #line = questions[q_counter]
                 tag_list.append("")
                 inside_tag = True
 
             if end_tag and inside_tag:
                 end_tag_index = line.index(end_t)
                 # this means that the line only contains the q_end tag
-                if end_tag_index == -1:
-                    line = ""
-                else:
-                    line = line[:end_tag_index]
+		line = line[:end_tag_index]
 
                 tag_list[tag_counter] += line
                 tag_counter += 1
@@ -48,8 +41,6 @@ class tag_checker:
                 tag["tag_counter"] = tag_counter
                 tag["tag_list"] = tag_list
                 tag["inside_tag"] = inside_tag
-
-                continue
             
             if inside_tag:
                 tag_list[tag_counter] += line
