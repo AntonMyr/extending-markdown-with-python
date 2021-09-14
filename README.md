@@ -1,1 +1,1 @@
-# extending-markdown-with-python
+# Code from blog post "Extend Your Markdown Workflow With Python
