@@ -4,16 +4,6 @@ from datetime import datetime
 
 from lib import tag_checker
 
-latest_week = False
-latest_month = False
-if len(sys.argv) > 1:
-    if sys.argv[1] == "m":
-        latest_month = True
-    else:
-        latest_week = True
-else:
-    latest_week = True
-
 tags = tag_checker()
 tags.add_tag("question", "<q", "q>")
 tags.add_tag("remember", "r==", "==r")
@@ -39,7 +29,7 @@ tmp_file = "/tmp/" + datetime.now().strftime("%y%m%d%H%M%S") + ".md"
 
 tmp_fp = open(tmp_file, "w")
 
-tmp_fp.write("# Collection from this week\n")
+tmp_fp.write("# Collection of tags\n")
 
 for tag in tags.tags:
     for i, tag_item in enumerate(tags.tags[tag]["tag_list"]):
